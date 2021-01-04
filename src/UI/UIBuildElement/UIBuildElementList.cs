@@ -132,8 +132,8 @@ namespace OutwardBuildCalc.UI.UIBuildElement
                 Weapon.WeaponType.Axe_1H, Weapon.WeaponType.Axe_2H,
                 Weapon.WeaponType.Bow, Weapon.WeaponType.Halberd_2H,
                 Weapon.WeaponType.Mace_1H, Weapon.WeaponType.Mace_2H,
-                Weapon.WeaponType.Spear_2H, Weapon.WeaponType.Sword_1H,
-                Weapon.WeaponType.Sword_2H
+                Weapon.WeaponType.Sword_1H, Weapon.WeaponType.Sword_2H,
+                Weapon.WeaponType.Spear_2H, Weapon.WeaponType.FistW_2H
             };
 
             BuildCalcMenu.Profile.WeaponBlacklist = m_notChosenOptions;
@@ -145,16 +145,17 @@ namespace OutwardBuildCalc.UI.UIBuildElement
         {
             if (!m_picking)
             {
-                if (GUILayout.Button("Weapon Type Blacklist", GUILayout.Width(150)))
+                if (GUILayout.Button("Choose Allowed Weapon-Types", GUILayout.Width(200)))
                     m_picking = true;
             }
             else
             {
-                if (GUILayout.Button("<", GUILayout.Width(40)))
+                if (GUILayout.Button("< Back", GUILayout.Width(100)))
                     m_picking = false;
                 else
                 {
                     base.OnGUI();
+                    UIStyles.HorizontalLine(Color.grey);
                 }
             }
         }

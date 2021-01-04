@@ -8,6 +8,7 @@ using OutwardBuildCalc.DB;
 using OutwardBuildCalc.DB.Model;
 using OutwardBuildCalc.DB.StaticData;
 using SideLoader;
+using UnityEngine;
 using SlotID = EquipmentSlot.EquipmentSlotIDs;
 
 namespace OutwardBuildCalc.CalcModel
@@ -26,7 +27,7 @@ namespace OutwardBuildCalc.CalcModel
             };
         }
 
-        internal const float MIN_NAIVE_DPS = 30f;
+        //internal const float MIN_NAIVE_DPS = 30f;
 
         public bool AxesOnlyUseSpecial = true;
         public bool LimitOneEachWeapon = true;
@@ -93,14 +94,10 @@ namespace OutwardBuildCalc.CalcModel
             // generate weapons shortlist (no yield)
 
             var shortList = new List<WeaponModel>();
-            SL.Log("checking weapon shortlist. Not allowed count: " + WeaponBlacklist.Count);
             foreach (var weapon in Database.WeaponModels)
             {
                 if (WeaponBlacklist.Contains(weapon.Type))
-                {
-                    SL.Log("Skipping weapon type " + weapon.Type + " (" + weapon.Name + ")");
                     continue;
-                }
 
                 if (ChosenWeapon != null && weapon.ItemID != ChosenWeapon?.ItemID)
                     continue;
@@ -119,7 +116,6 @@ namespace OutwardBuildCalc.CalcModel
             int itersThisYield = 0;
             foreach (var weapon in shortList)
             {
-
                 //// filter out low damage results if weapon was not chosen
                 //if (ChosenWeapon == null)
                 //{

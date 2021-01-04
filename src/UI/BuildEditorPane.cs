@@ -79,10 +79,12 @@ namespace OutwardBuildCalc.UI
             {
                 profile.AllowedImbues = m_imbueOptions.m_chosenOptions;
             });
+
             m_passives = new UIListPassives(Database.PassiveModels, "Passives", () =>
             {
                 profile.ChosenPassives = m_passives.m_chosenOptions;
             });
+
             m_statuses = new UIListStatuses(Database.StatusModels, "Status Effects", () =>
             {
                 profile.ChosenStatuses = m_statuses.m_chosenOptions;
@@ -129,20 +131,21 @@ namespace OutwardBuildCalc.UI
 
             GUILayout.Label("<size=16>Player Setup:</size>");
 
-            if (m_weaponChoice.Equipment == null)
-            {
-                m_blacklistedWeapons.OnGUI();
-            }
-
             m_weaponChoice.OnGUI();
+            if (m_weaponChoice.Equipment == null)
+                m_blacklistedWeapons.OnGUI();
+
             m_offhandChoice.OnGUI();
             m_helmetChoice.OnGUI();
             m_chestChoice.OnGUI();
             m_bootsChoice.OnGUI();
             m_backpackChoice.OnGUI();
 
+            UIStyles.HorizontalLine(Color.grey);
             m_imbueOptions.OnGUI();
+            UIStyles.HorizontalLine(Color.grey);
             m_passives.OnGUI();
+            UIStyles.HorizontalLine(Color.grey);
             m_statuses.OnGUI();
 
             GUILayout.EndScrollView();
