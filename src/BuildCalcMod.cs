@@ -12,7 +12,7 @@ using OutwardBuildCalc.CalcModel;
 
 namespace OutwardBuildCalc
 {
-    [BepInPlugin(GUID, "Build Calc", "1.0")]
+    [BepInPlugin(GUID, "Build Calc", "1.0.1")]
     public class BuildCalcMod : BaseUnityPlugin
     {
         const string GUID = "com.sinai.buildcalc";

@@ -25,15 +25,20 @@ namespace OutwardBuildCalc.CalcModel
 
         public CharacterBuild Clone() => (CharacterBuild)this.MemberwiseClone();
 
+        private IEnumerable<DamageType.Types> m_cachedUsedTypes;
+
         public IEnumerable<DamageType.Types> GetDamageTypes()
         {
+            if (m_cachedUsedTypes != null)
+                return m_cachedUsedTypes;
+
             var list = new HashSet<DamageType.Types>();
 
             list.UnionWith(MainWeapon.BaseDamage.List.Select(it => it.Type));
             list.UnionWith(MainWeapon.EnchantmentDamage.List.Select(it => it.Type));
             list.UnionWith(MainWeapon.EnchantmentBlastDamage.List.Select(it => it.Type));
 
-            return list;
+            return m_cachedUsedTypes = list;
         }
 
         public DamageList GetWeaponDamage(EnemyModel enemy, Dictionary<string, float[]> naturalHexes, bool useWeaponHex, bool useAxeSpecial = false) 

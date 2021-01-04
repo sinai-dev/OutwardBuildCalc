@@ -68,7 +68,7 @@ namespace OutwardBuildCalc.CalcModel
                         color = Color.red; break;
                 }
                 if (dmgTypes != "") dmgTypes += ", ";
-                dmgTypes += $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{type.Damage} ({type.Type})</color>";
+                dmgTypes += $"<color=#{ColorUtility.ToHtmlStringRGB(color)}>{type.Damage:F3} ({type.Type})</color>";
             }
 
             string passives = "";

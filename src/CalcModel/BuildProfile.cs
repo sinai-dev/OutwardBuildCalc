@@ -96,17 +96,14 @@ namespace OutwardBuildCalc.CalcModel
             var shortList = new List<WeaponModel>();
             foreach (var weapon in Database.WeaponModels)
             {
-                if (WeaponBlacklist.Contains(weapon.Type))
+                if (ChosenWeapon == null && WeaponBlacklist.Contains(weapon.Type))
                     continue;
-
                 if (ChosenWeapon != null && weapon.ItemID != ChosenWeapon?.ItemID)
                     continue;
                 if (ChosenWeapon?.EnchantID != null && weapon.EnchantID != ChosenWeapon?.EnchantID)
                     continue;
                 if (ChosenOffhand != null && weapon.TwoHanded)
                     continue;
-
-                // other basic weapon filtering would go here (eg Weapon Type filtering)
 
                 shortList.Add(weapon);
             }
